@@ -1,7 +1,10 @@
 hs_offset = 3;    //it sits on top of the socket
-hs_height = 25;  //increase to fit bigger case fans
+hs_height = 25;  //set to 25 or more to fit the heat sink
 ssd_depth = 0;   //set to 10 or more to fit a drive in the bottom
-fan_depth = 10;  //set to 10 or 20 for case fans, width/height is echo'd
+fan_depth = 0;  //set to 10 or 20 for case fans, width/height is echo'd
+
+//this is the height of the case not including the tray and lid 
+base = 10 + hs_offset + hs_height + ssd_depth;
 
 //theres a bug in this when the dimensions are unbalanced
 module rounded_rect(dimensions) {
@@ -11,14 +14,12 @@ module rounded_rect(dimensions) {
   }
 }
 
-//this is the height of the case not including the tray and lid 
-base = 10 + hs_offset + hs_height + ssd_depth;
-
 module udoo_board() {
   //the board  
   color([0,.5,.1,1]) import("./udoo_x86.stl", convexity=10);
-  //the heatsink fan
-  translate([25.5,34,hs_offset]) color([.6,.1,.1,.5]) cube([29,29,25]);
+  //the heatsink needs at least 25mm
+  if(hs_height >= 25)
+    translate([25.5,34,hs_offset]) color([.6,.1,.1,.5]) cube([29,29,25]);
   //an ssd needs at least 10mm
   if(ssd_depth >= 10)
     translate([10,7.5,-10 - ssd_depth]) color([.6,.1,.1,.5]) cube([101,70,10]);
