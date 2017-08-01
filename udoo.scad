@@ -1,5 +1,5 @@
 hs_offset = 3;    //it sits on top of the socket
-hs_height = 26;  //increase to fit bigger case fans
+hs_height = 25;  //increase to fit bigger case fans
 ssd_depth = 0;   //set to 10 or more to fit a drive in the bottom
 fan_depth = 10;  //set to 10 or 20 for case fans, width/height is echo'd
 
