@@ -20,14 +20,10 @@ wget http://udoo.org/download/files/mechanical_specs/udoo_x86_3d_model_revH.zip
 unzip udoo_x86_3d_model_revH.zip
 #get freecad
 sudo apt-get -y install freecad
-#use the freecadcmd to convert the step file to stl format
-PYTHONPATH=/usr/lib/freecad/lib/ python -c <<EOF
-import FreeCAD
-import Part
-import Mesh
-Part.open('csb02revh_idf_02_01_cfg01.STEP')
-Mesh.export(FreeCAD.getDocument("Unnamed").findObjects(), 'udoo_x86.stl')
-EOF
+#use the freecad python modules to convert the step file to stl format
+PYTHONPATH=$(dirname $(dpkg --listfiles freecad | grep -E 'FreeCAD\..*so$')) python -u ./convert.py csb02revh_idf_02_01_cfg01.STEP udoo_86x.stl
 #wait a bit for it to do the conversion...
 ```
+
+So above we download the zip file containing the step file, unzip it, install freecad, and run the `convert.py` script included in this repository to turn the step file into an stl file which openscad can load. After that just crack open the `udoo.scad` file and you should be able to play with the case model.
 
