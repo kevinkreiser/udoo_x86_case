@@ -45,3 +45,8 @@ You can change the `ssd_depth` parameter to be 10mm or more and an ssd will be r
 But what I want to try to do is make a custom low profile heat sink that actually comes out over top of the ram modules so it has larger surface area but less height. The reason for that is I want to make the case has thin as possible. To see what that would look like I set the `hs_height` parameter to `13` and it no longer renders the stock heat sink but the case gets much slimmer. Maybe something like this is possible:
 
 ![Low profile case](slim.jpg)
+
+Dimensions
+----------
+
+In some of the images you can get an idea of the rough dimensions and with some parsing of the `scad` file you can calculate them exactly. For reference the case is 87mm wide, 134mm long (plus the depth of each case fan). Depending on your setup the height could be anywhere from 32mm for the slim version up to 65mm for an ssd and the stock heatsink with the stock fan mounted on top of it.

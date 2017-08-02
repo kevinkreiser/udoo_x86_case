@@ -1,4 +1,4 @@
-hs_height = 25;  //set to 25 or more to fit the heat sink
+hs_height = 25;  //set to 25 or more to fit the stock heat sink, dont go less than 13
 hs_offset = 3;    //it sits on top of the socket
 ssd_depth = 0;   //set to 10 or more to fit a drive in the bottom
 fan_depth = 10;  //set to 10 or 20 for case fans, width/height is echo'd
