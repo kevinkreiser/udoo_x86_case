@@ -10,7 +10,7 @@ Disclaimer: I have done all of this on ubuntu so you're on your own with other n
 
 Anyway, Udoo have provided a 3d step format model of the udoo x86 board. The documentation says
 
-    3D model does not respects faithfully the real size of the componets, please for your design verify the component size with the official manufacturer datasheet .
+> 3D model does not respects faithfully the real size of the componets, please for your design verify the component size with the official manufacturer datasheet .
 
 but it seemed pretty darn close to the real thing so I based the case off of that. The problem is openscad doesn't have the ability to load step format so first off we have to convert it. To do that try the following:
 
@@ -28,3 +28,20 @@ openscad udoo_x86.scad
 
 So above we download the zip file containing the step file, unzip it, install freecad, and run the `convert.py` script included in this repository to turn the step file into an stl file which openscad can load. After that just crack open the `udoo.scad` file and you should be able to play with the case model.
 
+
+What does it look like?
+-----------------------
+
+Without changing any of the setting the basic setup looks like this:
+
+![The front of the case](front.jpg)
+
+![The back of the case](back.jpg)
+
+You can change the `ssd_depth` parameter to be 10mm or more and an ssd will be rendered in the preview:
+
+![With 2.5in drive](with_ssd.jpg)
+
+But what I want to try to do is make a custom low profile heat sink that actually comes out over top of the ram modules so it has larger surface area but less height. The reason for that is I want to make the case has thin as possible. To see what that would look like I set the `hs_height` parameter to `13` and it no longer renders the stock heat sink but the case gets much slimmer. Maybe something like this is possible:
+
+![Low profile case](slim.jpg)
