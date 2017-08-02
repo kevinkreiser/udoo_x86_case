@@ -21,7 +21,7 @@ sudo apt-get -y install freecad openscad
 wget http://udoo.org/download/files/mechanical_specs/udoo_x86_3d_model_revH.zip
 unzip udoo_x86_3d_model_revH.zip
 #use the freecad python modules to convert the step file to stl format
-PYTHONPATH=$(dirname $(dpkg --listfiles freecad | grep -E 'FreeCAD\..*so$')) python -u ./convert.py csb02revh_idf_02_01_cfg01.STEP udoo_86x.stl
+PYTHONPATH=$(dirname $(dpkg --listfiles freecad | grep -E 'FreeCAD\..*so$')) python -u ./convert.py csb02revh_idf_02_01_cfg01.STEP udoo_x86.stl
 #wait a bit for it to do the conversion...
 openscad udoo_x86.scad
 ```
