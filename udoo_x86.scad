@@ -1,5 +1,5 @@
-hs_offset = 3;    //it sits on top of the socket
 hs_height = 25;  //set to 25 or more to fit the heat sink
+hs_offset = 3;    //it sits on top of the socket
 ssd_depth = 0;   //set to 10 or more to fit a drive in the bottom
 fan_depth = 10;  //set to 10 or 20 for case fans, width/height is echo'd
 
@@ -63,7 +63,11 @@ module case_lid() {
         }
       }
       //cutout for hsf
-      color([0,.25,1,.5]) translate([28,33.5,-1]) cube([30,30,0]);
+      color([0,.25,1,.5]) {
+        for (i =[0:4]) {
+          translate([25.5,i * 7 + 34.5,-1]) rounded_rect([35,3,5]);
+        }
+      }
     }
   }
 }
@@ -78,9 +82,9 @@ module case_sides() {
       };
       //ventilation holes
       color([1,1,.25,.5]) {
-        for (i =[0:6]) {
-          translate([-5-fan_depth,18.5 + i * 8,base - 2]) rotate([0,90,0]) rounded_rect([base-4,3,5]);
-          translate([126+fan_depth,18.5 + i * 8,base - 2]) rotate([0,90,0]) rounded_rect([base-4,3,5]);
+        for (i =[0:9]) {
+          translate([-5-fan_depth,11 + i * 7,base - 2]) rotate([0,90,0]) rounded_rect([base-4,3,5]);
+          translate([126+fan_depth,11 + i * 7,base - 2]) rotate([0,90,0]) rounded_rect([base-4,3,5]);
         }
       };
     }
