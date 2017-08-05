@@ -47,7 +47,7 @@ module udoo_board() {
     translate([-4 - fan_depth,42.5-(fan_size/2),-standoff - ssd_depth]) color([.6,.1,.1,.5]) cube([fan_depth,fan_size,fan_size]);
     translate([134 - fan_depth,42.5-(fan_size/2),-standoff - ssd_depth]) color([.6,.1,.1,.5]) cube([fan_depth,fan_size,fan_size]);
   }
-};
+}
 
 module case_tray() {
   translate([0, 0, -standoff - 3 - ssd_depth]) {
@@ -82,11 +82,11 @@ module case_lid() {
       //cutout for hsf
       color([0,.25,1,.5]) {
         for (i =[0:6]) {
-          translate([18,i * 7 + 25,-1]) rounded_rect([45,3,5]);
+          translate([18,i * 7 + 25,flatten?0:-1]) rounded_rect([45,3,5]);
         }
         if(hs_height < 25) {
           for (i =[0:8]) {
-            translate([2,i * 7 + 18,-1]) rounded_rect([38,3,5]);
+            translate([2,i * 7 + 18,flatten?0:-1]) rounded_rect([38,3,5]);
           }
         }
       }
@@ -108,40 +108,40 @@ module case_sides() {
 }
 
 module case_panels() {
-      color([1,.25,1,.5]) {
-        translate([-4-fan_depth,88,-standoff-ssd_depth-3]) rotate([flatten?0:90,0,0]) difference() {
-          fcube([134+fan_depth*2,6 + base,3]);
-          translate([14,-1,0]) union() {
-            //sdcard
-            translate([101,11 + ssd_depth,flatten?0:-1]) fcube([14,2,5]);
-            //audio in/out jack
-            translate([83.75,14.5 + ssd_depth,flatten?0:-1]) fcube([7,5,5]);
-            //usb 3.0 ports
-            translate([66.75,15 + ssd_depth,flatten?0:-1]) fcube([14.75,7.25,5]);
-            translate([49,15 + ssd_depth,flatten?0:-1]) fcube([14.75,7.25,5]);
-            //power button
-            translate([17.5,14.5 + ssd_depth,flatten?0:-1]) fcube([4,1.75,5]);
-            //ir receiver
-            translate([9.5,14.5 + ssd_depth,flatten?0:-1]) fcube([7,3.25,5]);
-          }
-        }
-        translate([-4-fan_depth,0,-standoff-ssd_depth-3]) rotate([flatten?0:90,0,0]) difference() {
-          fcube([134+fan_depth*2,6 + base,3]);
-          translate([14,-1,0]) union() {
-            //dc in
-            translate([11.75,14.5 + ssd_depth,flatten?0:-1]) fcube([9.5,11.25,5]);
-            //usb 3.0 port
-            translate([24.25,15 + ssd_depth,flatten?0:-1]) fcube([14.75,7.25,5]);
-            //ethernet port
-            translate([41.5,15 + ssd_depth,flatten?0:-1]) fcube([16.5,14,5]);
-            //hdmi
-            translate([62,15 + ssd_depth,flatten?0:-1]) fcube([15.25,6,5]);
-            //mini dp+ ports
-            translate([82.75,17.5 + ssd_depth,flatten?0:-1]) fcube([9,6,5]);
-            translate([96.75,17.5 + ssd_depth,flatten?0:-1]) fcube([9,6,5]);
-          }
-        }
+  color([1,.25,1,.5]) {
+    translate([-4-fan_depth,88,-standoff-ssd_depth-3]) rotate([flatten?0:90,0,0]) difference() {
+      fcube([134+fan_depth*2,6 + base,3]);
+      translate([14,-1,0]) union() {
+        //sdcard
+        translate([101,11 + ssd_depth,flatten?0:-1]) fcube([14,2,5]);
+        //audio in/out jack
+        translate([83.75,14.5 + ssd_depth,flatten?0:-1]) fcube([7,5,5]);
+        //usb 3.0 ports
+        translate([66.75,15 + ssd_depth,flatten?0:-1]) fcube([14.75,7.25,5]);
+        translate([49,15 + ssd_depth,flatten?0:-1]) fcube([14.75,7.25,5]);
+        //power button
+        translate([17.5,14.5 + ssd_depth,flatten?0:-1]) fcube([4,1.75,5]);
+        //ir receiver
+        translate([9.5,14.5 + ssd_depth,flatten?0:-1]) fcube([7,3.25,5]);
       }
+    }
+    translate([-4-fan_depth,0,-standoff-ssd_depth-3]) rotate([flatten?0:90,0,0]) difference() {
+      fcube([134+fan_depth*2,6 + base,3]);
+      translate([14,-1,0]) union() {
+        //dc in
+        translate([11.75,14.5 + ssd_depth,flatten?0:-1]) fcube([9.5,11.25,5]);
+        //usb 3.0 port
+        translate([24.25,15 + ssd_depth,flatten?0:-1]) fcube([14.75,7.25,5]);
+        //ethernet port
+        translate([41.5,15 + ssd_depth,flatten?0:-1]) fcube([16.5,14,5]);
+        //hdmi
+        translate([62,15 + ssd_depth,flatten?0:-1]) fcube([15.25,6,5]);
+        //mini dp+ ports
+        translate([82.75,17.5 + ssd_depth,flatten?0:-1]) fcube([9,6,5]);
+        translate([96.75,17.5 + ssd_depth,flatten?0:-1]) fcube([9,6,5]);
+      }
+    }
+  }
 }
 
 translate([-63,-42.5,0]) {
